@@ -7,23 +7,40 @@ game.controller('GameCtrl', ['$scope', function($scope) {
 	$scope.veggies = [];
 
 	$scope.moveFromPooltoFruits = function(idx) {
-		var toMove = $scope.pool.splice(idx,1);
-		$scope.fruits.push(toMove);
+		$scope.fruits.push($scope.pool[idx]);
+		$scope.pool.splice(idx,1);
 	};
 
 	$scope.moveFromPooltoVeggies = function(idx) {
-		var toMove = $scope.pool.splice(idx,1);
-		$scope.veggies.push(toMove);
+		$scope.veggies.push($scope.pool[idx]);
+		$scope.pool.splice(idx,1);
 	}
 
 	$scope.moveFromVeggiestoPool = function(idx) {
-		var toMove = $scope.veggies.splice(idx,1);
-		$scope.pool.push(toMove);
+		$scope.pool.push($scope.veggies[idx]);
+		$scope.veggies.splice(idx,1);
 	}
 
 	$scope.moveFromFruitsToPool = function(idx) {
-		var toMove = $scope.fruits.splice(idx,1);
-		$scope.pool.push(toMove);
+		$scope.pool.push($scope.fruits[idx]);
+		$scope.fruits.splice(idx,1);
+	}
+
+	$scope.checkAnswers = function() {
+		if ($scope.pool.length === 0) {
+			for (var i = 0; i < fruit.length ; i++) {
+				if ($scope.fruit.indexOf(fruit[i]) == -1 ) {
+					return false 
+				}
+			}
+
+			for (var i = 0; i < vegetables.length; i++) {
+				if ($scope.veggies.indexOf(vegetables[i]) == -1) {
+					return false
+				}
+			}
+			return true;
+		}
 	}
 
 }]);
