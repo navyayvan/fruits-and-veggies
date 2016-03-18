@@ -5,6 +5,7 @@ game.controller('GameCtrl', ['$scope', function($scope) {
 	$scope.pool = fruit.concat(vegetables);
 	$scope.fruits = [];
 	$scope.veggies = [];
+	$scope.item = 'background-color: red';
 
 	$scope.moveFromPooltoFruits = function(idx) {
 		$scope.fruits.push($scope.pool[idx]);
@@ -28,14 +29,17 @@ game.controller('GameCtrl', ['$scope', function($scope) {
 
 	$scope.checkAnswers = function() {
 		if ($scope.pool.length === 0) {
+
 			for (var i = 0; i < fruit.length ; i++) {
-				if ($scope.fruit.indexOf(fruit[i]) == -1 ) {
+				if ($scope.fruits.indexOf(fruit[i]) == -1 ) {
+						$scope.well = true;
 					return false 
 				}
 			}
 
 			for (var i = 0; i < vegetables.length; i++) {
 				if ($scope.veggies.indexOf(vegetables[i]) == -1) {
+					$scope.well = true;
 					return false
 				}
 			}

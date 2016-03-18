@@ -1,1 +1,8 @@
-/* file for your css */
+body {
+	background-image: url("http://watchdognews.net/wp-content/uploads/2015/11/Fruits-and-Veggies.jpg");
+	background-size: 90%;
+}
+
+.item {
+	background-color: red;
+}
