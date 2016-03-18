@@ -4,25 +4,51 @@
         <title>Fruit and Veggies</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
         <script src="js/fruit_and_veggies_test.js"></script>
         <script src="js/app.js"></script>
     </head>
-    <body>
-        <div class="container">
+
+    <body ng-app='FoodGame'>
+        <div ng-controller='GameCtrl' class="container">
             <h1>Fruit and Veggies</h1>
             <div class="row">
+
                 <div class="col-sm-4">
-                    col 1
+                    <h1> Fruits </h1>
+                    <ul>
+                        <div class='well' ng-repeat='fruit in fruits track by $index'>
+                            <button> &lt; </button> 
+                            {{fruit}} 
+                            <button ng-click='moveFromFruitsToPool($index)'> &gt; </button> 
+                        </div>
+                    </ul>
                 </div>
-                <div class="col-sm-4">
-                    col 2
+
+                <div style='text-align:center' class="col-sm-4">
+                    <h1 > Pool </h1>
+                    <ul>
+                        <div class='well' ng-repeat='fooditem in pool track by $index'> 
+                            <button ng-click='moveFromPooltoFruits($index)'> &lt; </button>
+                            {{fooditem}} 
+                            <button ng-click='moveFromPooltoVeggies($index)'> &gt;</button> 
+                        </div>
+                    </ul>
                 </div>
+
                 <div class="col-sm-4">
-                    col 3
-                </div>                        
+                    <h1>Veggies</h1>
+                        <ul>
+                            <div class='well' ng-repeat='veggie in veggies track by $index'>
+                                <button ng-click='moveFromVeggiestoPool($index)'> &lt; </button> 
+                                {{veggie}} 
+                                <button> &gt;</button> 
+                            </div>
+                        </ul>
+                </div>   
+
             </div>
+
         </div>
     </body>
 </html>
